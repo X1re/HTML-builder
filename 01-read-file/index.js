@@ -1,4 +1,3 @@
-// const { readStream } = require("fs");
 const fs = require("fs");
 const { join } = require("path");
 const { stdout } = require("process");
