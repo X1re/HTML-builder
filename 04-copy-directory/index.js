@@ -5,11 +5,7 @@ const folder = join(__dirname, "files");
 const output = join(__dirname, "files-copy");
 async function copyDir() {
   try {
-    await fs.mkdir(output, { recursive: true }, (err, __dirname) => {
-      if (err) {
-        throw err;
-      }
-    });
+    await fs.mkdir(output, { recursive: true });
     const files = await fs.readdir(folder);
     files.forEach(file => {
       fs.copyFile(`${folder}\\${file}`, `${output}\\${file}`);
