@@ -18,7 +18,7 @@ async function buildStyles() {
       }
     }
   } catch (err) {
-    console.error("Styles couldn't be builded");
+    console.error("Styles couldn't be built");
     console.error(err);
   } finally {
     console.log("Styles have been built!");
