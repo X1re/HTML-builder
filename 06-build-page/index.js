@@ -1,9 +1,9 @@
 const { createWriteStream, createReadStream } = require("fs");
 const fs = require("fs/promises");
 const { join } = require("path");
-const copyDir = require("../04-copy-directory");
-const buildStyles = require("../05-merge-styles");
-
+const projectDir = process.cwd();
+const copyDir = require(join(projectDir, "/04-copy-directory"));
+const buildStyles = require(join(projectDir, "/05-merge-styles"));
 const targetFolder = join(__dirname, "project-dist");
 const componentsDir = join(__dirname, "components");
 const stylesFolder = join(__dirname, "styles");
