@@ -1,4 +1,4 @@
-const { createWriteStream, createReadStream, stat } = require("fs");
+const { createWriteStream, createReadStream } = require("fs");
 const fs = require("fs/promises");
 const { join } = require("path");
 const copyDir = require("../04-copy-directory");
@@ -43,7 +43,7 @@ async function buildProject() {
     const output = createWriteStream(join(targetFolder, "index.html"));
 
     output.write(html);
-    buildStyles(targetFolder, stylesFolder, "styles.css");
+    buildStyles(targetFolder, stylesFolder, "style.css");
     const assetsFolderCheck = await fs.readdir(join(__dirname, "assets"));
 
     for (const asset of assetsFolderCheck) {
