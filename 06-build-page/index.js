@@ -49,7 +49,7 @@ async function buildProject() {
     for (const asset of assetsFolderCheck) {
       const stats = await fs.stat(join(assetsFolder, asset));
       if (stats.isDirectory) {
-        copyDir(join(assetsFolder, asset), join(targetFolder, "assets"));
+        copyDir(join(assetsFolder, asset), join(targetFolder, "assets", asset));
       } else {
         copyDir(assetsFolder, targetFolder);
       }
