@@ -1,19 +1,22 @@
 const { join } = require("path");
 const fs = require("fs/promises");
 
-const folder = join(__dirname, "files");
-const output = join(__dirname, "files-copy");
-
-async function copyDir() {
+async function copyDir(copyFrom, copyWhere) {
   try {
-    await fs.mkdir(output, { recursive: true });
-    const files = await fs.readdir(folder);
+    await fs.mkdir(copyWhere, { recursive: true });
+    const files = await fs.readdir(copyFrom);
     files.forEach(file => {
-      fs.copyFile(`${folder}\\${file}`, `${output}\\${file}`);
+      fs.copyFile(`${copyFrom}\\${file}`, `${copyWhere}\\${file}`);
     });
     console.log("Files copied!");
   } catch {
     console.error("Files couldn't be copied");
   }
 }
-copyDir();
+if (require.main === module) {
+  const folder = join(__dirname, "files");
+  const output = join(__dirname, "files-copy");
+  copyDir(folder, output);
+}
+
+module.exports = copyDir;

@@ -4,8 +4,8 @@ const { stdout } = require("process");
 
 const folder = join(__dirname, "secret-folder");
 
-const getFileNameWithoutExt = someFile => {
-  return someFile.split(".").slice(0, -1).join(".");
+const getFileNameWithoutExt = file => {
+  return file.split(".").slice(0, -1).join(".");
 };
 
 fs.readdir(folder, { withFileTypes: true }, (err, files) => {
