@@ -1,4 +1,4 @@
-const { join, extname } = require("path");
+const { join, extname, parse } = require("path");
 const fs = require("fs");
 const { stdout } = require("process");
 
@@ -18,10 +18,11 @@ fs.readdir(folder, { withFileTypes: true }, (err, files) => {
         if (err) {
           throw err;
         }
+        const fileName = parse(join(folder, file.name)).name;
         stdout.write(
-          `${getFileNameWithoutExt(file.name)} - ${extname(file.name).slice(
-            1
-          )} - ${stats.size / 1000}kb\n`
+          `${fileName} - ${extname(file.name).slice(1)} - ${
+            stats.size / 1000
+          }kb\n`
         );
       });
     }

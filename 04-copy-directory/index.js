@@ -3,6 +3,7 @@ const fs = require("fs/promises");
 
 async function copyDir(copyFrom, copyWhere) {
   try {
+    await fs.rm(copyWhere, { recursive: true, force: true });
     await fs.mkdir(copyWhere, { recursive: true });
     const files = await fs.readdir(copyFrom);
     files.forEach(file => {
